@@ -4,21 +4,20 @@ class RecomendationsProcessor:
 
     def conclusion(self, features, probability) -> list:
         risk_factors = self.risk_factor(**features)
-        if probability > 0.5:
+        if probability > 0.5 and risk_factors:
             conclusion = [
                 "Пожалуйста пройдите медицинское обследование! Так же обратите внимание на нижеперечисленные факторы риска сердечно-сосудистых заболеваний:"
             ]
             conclusion += risk_factors
+        elif risk_factors:
+            conclusion = [
+                "Всё хорошо! Риск наличия сердечно-сосудистых заболеваний невысокий! Однако обратите внимание на следующие аспекты:"
+            ]
+            conclusion += risk_factors
         else:
-            if risk_factors:
-                conclusion = [
-                    "Всё хорошо! Риск наличия сердечно-сосудистых заболеваний невысокий! Однако обратите внимание на следующие аспекты:"
-                ]
-                conclusion += risk_factors
-            else:
-                conclusion = [
-                    "Всё хорошо! Риск наличия сердечно-сосудистых заболеваний невысокий!"
-                ]
+            conclusion = [
+                "Всё хорошо! Риск наличия сердечно-сосудистых заболеваний невысокий!"
+            ]
 
         return conclusion
 
