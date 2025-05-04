@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 import joblib
 
-from RecomendationsProcessor import RecomendationsProcessor
+from RecommendationsProcessor import RecomendationsProcessor
 from PatientInput import PatientInput
 from PredictionResponse import PredictionResponse
 from PatientDataProcessor import PatientDataProcessor
